@@ -673,10 +673,14 @@ open class EasyTipView: UIView {
     }
     
     fileprivate func paintBubble(_ context: CGContext, linearGradient config: LinearGradient) {
+        let width = bounds.width
+        let height = bounds.height
         context.drawLinearGradient(
             config.gradient,
-            start: CGPoint(x: config.start.x * bounds.width, y: config.start.y * bounds.height),
-            end: CGPoint(x: config.end.x * bounds.width, y: config.end.y * bounds.height),
+            start: CGPoint(x: config.start.x * width,
+                           y: config.start.y * height),
+            end: CGPoint(x: config.end.x * width,
+                         y: config.end.y * height),
             options: config.options)
         context.fillPath()
     }
