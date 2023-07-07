@@ -12,6 +12,7 @@
 		3DEF6DAB23A39E4F007B8C3C /* EasyTipView.h in Headers */ = {isa = PBXBuildFile; fileRef = 3DEF6DA823A39E4F007B8C3C /* EasyTipView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3DEF6DAC23A39E4F007B8C3C /* UIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEF6DA923A39E4F007B8C3C /* UIKitExtensions.swift */; };
 		3DEF6DAD23A39E4F007B8C3C /* EasyTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DEF6DAA23A39E4F007B8C3C /* EasyTipView.swift */; };
+		8FB820C12A57E42700F6C5A8 /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB820C02A57E42700F6C5A8 /* CGFloatExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		3DEF6DA823A39E4F007B8C3C /* EasyTipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EasyTipView.h; sourceTree = "<group>"; };
 		3DEF6DA923A39E4F007B8C3C /* UIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtensions.swift; sourceTree = "<group>"; };
 		3DEF6DAA23A39E4F007B8C3C /* EasyTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EasyTipView.swift; sourceTree = "<group>"; };
+		8FB820C02A57E42700F6C5A8 /* CGFloatExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				3DEF6DA823A39E4F007B8C3C /* EasyTipView.h */,
 				3DEF6DAA23A39E4F007B8C3C /* EasyTipView.swift */,
+				8FB820C02A57E42700F6C5A8 /* CGFloatExtensions.swift */,
 				3DEF6DA923A39E4F007B8C3C /* UIKitExtensions.swift */,
 			);
 			path = EasyTipView;
@@ -223,6 +226,7 @@
 			files = (
 				3DEF6DAD23A39E4F007B8C3C /* EasyTipView.swift in Sources */,
 				3DEF6DAC23A39E4F007B8C3C /* UIKitExtensions.swift in Sources */,
+				8FB820C12A57E42700F6C5A8 /* CGFloatExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

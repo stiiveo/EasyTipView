@@ -798,11 +798,4 @@ private extension EasyTipView.Preferences.Drawing.Background.Gradient {
             end: end.point, options: [])
     }
 }
-
-private extension CGFloat {
-    func capped(lowest: Double, hightest: Double) -> Double {
-        let lowest = Swift.max(self, 0)
-        return Swift.min(lowest, 1)
-    }
-}
 #endif
