@@ -204,7 +204,7 @@ class ViewController: UIViewController, EasyTipViewDelegate {
             preferences.animating.dismissDuration = 1
             preferences.drawing.arrowPosition = .bottom
 
-            preferences.positioning.contentInsets = UIEdgeInsetsMake(5, 5, 5, 5)
+            preferences.positioning.contentInsets = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
             
             let contentView = UIImageView(frame: CGRect(x: 0, y: 0, width: 300, height: 82))
             contentView.image = UIImage(named: "easytipview")
