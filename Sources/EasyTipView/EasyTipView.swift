@@ -225,7 +225,7 @@ open class EasyTipView: UIView {
             public var arrowHeight         = CGFloat(5)
             public var arrowWidth          = CGFloat(10)
             public var foregroundColor     = UIColor.white
-            public var backgroundColor     = UIColor.red
+            public var background          = Background.fill(UIColor.red)
             public var arrowPosition       = ArrowPosition.any
             public var textAlignment       = NSTextAlignment.center
             public var borderWidth         = CGFloat(0)
@@ -235,6 +235,21 @@ open class EasyTipView: UIView {
             public var shadowOffset        = CGSize(width: 0.0, height: 0.0)
             public var shadowRadius        = CGFloat(0)
             public var shadowOpacity       = CGFloat(0)
+            
+            public enum Background {
+                case fill(UIColor)
+                case gradient(Gradient)
+                
+                public struct Gradient {
+                    public var start: Config
+                    public var end: Config
+                    
+                    public struct Config {
+                        public var point: CGPoint
+                        public var color: UIColor
+                    }
+                }
+            }
         }
         
         public struct Positioning {
@@ -296,7 +311,7 @@ open class EasyTipView: UIView {
             guard let color = backgroundColor
                   , color != UIColor.clear else {return}  
             
-            preferences.drawing.backgroundColor = color
+            preferences.drawing.background = .fill(color)
             backgroundColor = UIColor.clear
         }
     }
@@ -588,7 +603,12 @@ open class EasyTipView: UIView {
         context.addPath(contourPath)
         context.clip()
         
-        paintBubble(context, fillColor: preferences.drawing.backgroundColor)
+        switch preferences.drawing.background {
+        case let .fill(color):
+            paintBubble(context, fillColor: color)
+        case .gradient:
+            break
+        }
         
         if preferences.hasBorder {
             drawBorder(contourPath, context: context)
@@ -631,6 +651,18 @@ open class EasyTipView: UIView {
     fileprivate func paintBubble(_ context: CGContext, fillColor: UIColor) {
         context.setFillColor(fillColor.cgColor)
         context.fill(bounds)
+    }
+    
+    fileprivate struct LinearGradient {
+        var gradient: CGGradient
+        var start: CGPoint
+        var end: CGPoint
+        var options: CGGradientDrawingOptions
+    }
+    
+    fileprivate func paintBubble(_ context: CGContext, linearGradient config: LinearGradient) {
+        context.drawLinearGradient(config.gradient, start: config.start, end: config.end, options: config.options)
+        context.fillPath()
     }
     
     fileprivate func drawBorder(_ borderPath: CGPath, context: CGContext) {

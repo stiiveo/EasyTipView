@@ -49,7 +49,7 @@ class ViewController: UIViewController, EasyTipViewDelegate {
         
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
         preferences.drawing.foregroundColor = UIColor.white
-        preferences.drawing.backgroundColor = UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1)
+        preferences.drawing.background = .fill(UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1))
         
         EasyTipView.globalPreferences = preferences
         self.view.backgroundColor = UIColor(hue:0.75, saturation:0.01, brightness:0.96, alpha:1.00)
@@ -100,7 +100,7 @@ class ViewController: UIViewController, EasyTipViewDelegate {
         case buttonA:
             
             var preferences = EasyTipView.Preferences()
-            preferences.drawing.backgroundColor = UIColor(hue:0.58, saturation:0.1, brightness:1, alpha:1)
+            preferences.drawing.background = .fill(UIColor(hue:0.58, saturation:0.1, brightness:1, alpha:1))
             preferences.drawing.foregroundColor = UIColor.darkGray
             preferences.drawing.textAlignment = NSTextAlignment.center
             
@@ -136,7 +136,7 @@ class ViewController: UIViewController, EasyTipViewDelegate {
         case buttonC:
             
             var preferences = EasyTipView.globalPreferences
-            preferences.drawing.backgroundColor = buttonC.backgroundColor!
+            preferences.drawing.background = .fill(buttonC.backgroundColor!)
             
             preferences.animating.dismissTransform = CGAffineTransform(translationX: 0, y: -15)
             preferences.animating.showInitialTransform = CGAffineTransform(translationX: 0, y: -15)
@@ -154,7 +154,7 @@ class ViewController: UIViewController, EasyTipViewDelegate {
         case buttonE:
             
             var preferences = EasyTipView.Preferences()
-            preferences.drawing.backgroundColor = buttonE.backgroundColor!
+            preferences.drawing.background = .fill(buttonE.backgroundColor!)
             preferences.drawing.foregroundColor = UIColor.white
             preferences.drawing.textAlignment = NSTextAlignment.center
             
@@ -174,7 +174,7 @@ class ViewController: UIViewController, EasyTipViewDelegate {
         case buttonF:
             
             var preferences = EasyTipView.Preferences()
-            preferences.drawing.backgroundColor = buttonF.backgroundColor!
+            preferences.drawing.background = .fill(buttonF.backgroundColor!)
             preferences.drawing.foregroundColor = UIColor.white
             preferences.drawing.textAlignment = NSTextAlignment.center
             
@@ -195,7 +195,7 @@ class ViewController: UIViewController, EasyTipViewDelegate {
         case buttonG:
             
             var preferences = EasyTipView.globalPreferences
-            preferences.drawing.backgroundColor = buttonG.backgroundColor!
+            preferences.drawing.background = .fill(buttonG.backgroundColor!)
 
             preferences.animating.dismissTransform = CGAffineTransform(translationX: 0, y: -15)
             preferences.animating.showInitialTransform = CGAffineTransform(translationX: 0, y: 15)
@@ -218,7 +218,7 @@ class ViewController: UIViewController, EasyTipViewDelegate {
             preferences.drawing.arrowPosition = .bottom
             preferences.drawing.font = UIFont.systemFont(ofSize: 14)
             preferences.drawing.textAlignment = .center
-            preferences.drawing.backgroundColor = buttonD.backgroundColor!
+            preferences.drawing.background = .fill(buttonD.backgroundColor!)
 
             preferences.positioning.maxWidth = 230
 
