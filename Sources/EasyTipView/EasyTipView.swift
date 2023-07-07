@@ -588,7 +588,7 @@ open class EasyTipView: UIView {
         context.addPath(contourPath)
         context.clip()
         
-        paintBubble(context)
+        paintBubble(context, fillColor: preferences.drawing.backgroundColor)
         
         if preferences.hasBorder {
             drawBorder(contourPath, context: context)
@@ -628,8 +628,8 @@ open class EasyTipView: UIView {
         path.addArc(tangent1End: CGPoint(x: frame.x, y: frame.y + frame.height), tangent2End: CGPoint(x: frame.x, y: frame.y), radius: cornerRadius)
     }
     
-    fileprivate func paintBubble(_ context: CGContext) {
-        context.setFillColor(preferences.drawing.backgroundColor.cgColor)
+    fileprivate func paintBubble(_ context: CGContext, fillColor: UIColor) {
+        context.setFillColor(fillColor.cgColor)
         context.fill(bounds)
     }
     
