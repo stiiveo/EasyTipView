@@ -244,9 +244,21 @@ open class EasyTipView: UIView {
                     public var start: Config
                     public var end: Config
                     
+                    public init(start: Config, end: Config) {
+                        self.start = start
+                        self.end = end
+                    }
+                    
                     public struct Config {
                         public var point: CGPoint
                         public var color: UIColor
+                        
+                        public init(point: CGPoint, color: UIColor) {
+                            self.point = CGPoint(
+                                x: point.x.capped(lowest: 0, hightest: 1),
+                                y: point.y.capped(lowest: 0, hightest: 1))
+                            self.color = color
+                        }
                     }
                 }
             }
@@ -606,8 +618,8 @@ open class EasyTipView: UIView {
         switch preferences.drawing.background {
         case let .fill(color):
             paintBubble(context, fillColor: color)
-        case .gradient:
-            break
+        case let .gradient(gradient):
+            paintBubble(context, linearGradient: gradient.linearGradient)
         }
         
         if preferences.hasBorder {
@@ -661,7 +673,11 @@ open class EasyTipView: UIView {
     }
     
     fileprivate func paintBubble(_ context: CGContext, linearGradient config: LinearGradient) {
-        context.drawLinearGradient(config.gradient, start: config.start, end: config.end, options: config.options)
+        context.drawLinearGradient(
+            config.gradient,
+            start: CGPoint(x: config.start.x * bounds.width, y: config.start.y * bounds.height),
+            end: CGPoint(x: config.end.x * bounds.width, y: config.end.y * bounds.height),
+            options: config.options)
         context.fillPath()
     }
     
@@ -763,6 +779,30 @@ open class EasyTipView: UIView {
     
     private func getContentRect(from bubbleFrame: CGRect) -> CGRect {
         return CGRect(x: bubbleFrame.origin.x + preferences.positioning.contentInsets.left, y: bubbleFrame.origin.y + preferences.positioning.contentInsets.top, width: contentSize.width, height: contentSize.height)
+    }
+}
+
+// MARK: - LinearGradient Mapper
+
+private extension EasyTipView.Preferences.Drawing.Background.Gradient {
+    var linearGradient: EasyTipView.LinearGradient {
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let colors = [start.color.cgColor, end.color.cgColor]
+        let gradient = CGGradient(
+            colorsSpace: colorSpace,
+            colors: colors as CFArray,
+            locations: [0.0, 1.0])!
+        return EasyTipView.LinearGradient(
+            gradient: gradient,
+            start: start.point,
+            end: end.point, options: [])
+    }
+}
+
+private extension CGFloat {
+    func capped(lowest: Double, hightest: Double) -> Double {
+        let lowest = Swift.max(self, 0)
+        return Swift.min(lowest, 1)
     }
 }
 #endif
