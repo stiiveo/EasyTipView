@@ -49,7 +49,11 @@ class ViewController: UIViewController, EasyTipViewDelegate {
         
         preferences.drawing.font = UIFont(name: "Futura-Medium", size: 13)!
         preferences.drawing.foregroundColor = UIColor.white
-        preferences.drawing.background = .fill(UIColor(hue:0.46, saturation:0.99, brightness:0.6, alpha:1))
+        preferences.drawing.background = .gradient(.init(
+            start: .init(point: CGPoint(x: 0, y: 1),
+                         color: UIColor(red: 0.949, green: 0.541, blue: 0.541, alpha: 0.8)),
+            end: .init(point: CGPoint(x: 1, y: 0),
+                       color: UIColor(red: 0.953, green: 0.702, blue: 0, alpha: 1))))
         
         EasyTipView.globalPreferences = preferences
         self.view.backgroundColor = UIColor(hue:0.75, saturation:0.01, brightness:0.96, alpha:1.00)
